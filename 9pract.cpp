@@ -19,10 +19,10 @@ int findMaxElement(double arr[], int size) {
             maxIndex = i;
         }
     }
-    return maxIndex
+    return maxIndex;
 }
 
-int countGreaterThan(double arr[], int size, double value) {
+int counter(double arr[], int size, double value) {
     int count = 0;
     for (int i = 0; i < size; i++) {
         if (arr[i] > value) {
@@ -41,7 +41,7 @@ double sum(double arr[], int size) {
 }
 
 // Функция для ввода данных о работнике (пункт 3)
-void inputWorkerData() {
+void Worker() {
     double data[3]; // массив для хранения данных: [часы, ставка, премия%]
     
     cout << "Введите количество отработанных часов: ";
@@ -53,11 +53,11 @@ void inputWorkerData() {
     
     // Расчеты с использованием функций для массивов
     double salary = data[0] * data[1];
-    double bonusAmount = salary * data[2] / 100;
-    double total = salary + bonusAmount;
+    double prem = salary * data[2] / 100;
+    double total = salary + prem;
     
     // Создаем массив с результатами расчетов
-    double results[3] = {salary, bonusAmount, total};
+    double results[3] = {salary, prem, total};
     
     // Вывод результатов с использованием функций для массивов
     cout << "\nРезультаты расчета:" << endl;
@@ -77,8 +77,8 @@ void inputWorkerData() {
     cout << "Максимальное значение и его номер: " << data[maxIndex] << " (позиция " << maxIndex << ")" << endl;
     
     // 3. Количество элементов больше 50000 в результатах
-    int count = countGreaterThan(results, 3, 50000);
-    cout << "Количество сумм больше 1000 руб.: " << count << endl;
+    int count = counter(results, 3, 50000);
+    cout << "Количество сумм больше 50000 руб.: " << count << endl;
     
     // 4. Сумма всех результатов
     double totalSum = sum(results, 3);
@@ -86,7 +86,7 @@ void inputWorkerData() {
 }
 
 int main() {
-    cout << "=== Расчет зарплаты работника ===" << endl;
-    inputWorkerData();
+    cout << "Расчет зарплаты работника:  " << endl;
+    Worker();
     return 0;
 }
