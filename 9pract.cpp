@@ -12,15 +12,14 @@ int findMinElement(double arr[], int size) {
     return minIndex;
 }
 
-void findMaxElement(double arr[], int size, double &maxValue, int &maxIndex) {
-    maxValue = arr[0];
-    maxIndex = 0;
+int findMaxElement(double arr[], int size) {
+    int maxIndex = 0;
     for (int i = 1; i < size; i++) {
-        if (arr[i] > maxValue) {
-            maxValue = arr[i];
+        if (arr[i] > arr[maxIndex]) {
             maxIndex = i;
         }
     }
+    return maxIndex
 }
 
 int countGreaterThan(double arr[], int size, double value) {
@@ -33,7 +32,7 @@ int countGreaterThan(double arr[], int size, double value) {
     return count;
 }
 
-double sumArray(double arr[], int size) {
+double sum(double arr[], int size) {
     double sum = 0;
     for (int i = 0; i < size; i++) {
         sum += arr[i];
@@ -70,21 +69,19 @@ void inputWorkerData() {
     cout << "\nАнализ данных с использованием функций:" << endl;
     
     // 1. Номер минимального элемента в исходных данных
-    int minIndex = findMinIndex(data, 3);
-    cout << "Минимальное значение в исходных данных: " << data[minIndex] << " (позиция " << minIndex << ")" << endl;
+    int minIndex = findMinElement(data, 3);
+    cout << "Минимальное значение и его номер: " << data[minIndex] << " (позиция " << minIndex << ")" << endl;
     
     // 2. Максимальный элемент и его номер в результатах
-    double maxValue;
-    int maxIndex;
-    findMaxElement(results, 3, maxValue, maxIndex);
-    cout << "Максимальная сумма: " << maxValue << " руб. (позиция " << maxIndex << ")" << endl;
+    int maxIndex = findMaxElement(data, 3);
+    cout << "Максимальное значение и его номер: " << data[maxIndex] << " (позиция " << maxIndex << ")" << endl;
     
     // 3. Количество элементов больше 50000 в результатах
     int count = countGreaterThan(results, 3, 50000);
     cout << "Количество сумм больше 1000 руб.: " << count << endl;
     
     // 4. Сумма всех результатов
-    double totalSum = sumArray(results, 3);
+    double totalSum = sum(results, 3);
     cout << "Общая сумма всех компонентов: " << totalSum << " руб." << endl;
 }
 
